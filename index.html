@@ -3,8 +3,48 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Studio Legale Associato Vassallo &amp; Tamburro — Genova</title>
-<meta name="description" content="Studio Legale Associato Vassallo & Tamburro, con sede a Genova in Piazza Colombo. Diritto bancario e assicurativo, responsabilità civile, diritto di famiglia, commerciale, condominio e locazioni." />
+<title>Studio Legale Vassallo &amp; Tamburro | Avvocati a Genova</title>
+<meta name="description" content="Studio Legale Associato Vassallo & Tamburro: avvocati a Genova, in Piazza Colombo. Diritto bancario e assicurativo, responsabilità civile, diritto di famiglia, commerciale, condominio e locazioni." />
+<link rel="canonical" href="https://studiovassallotamburro.it/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Studio Legale Vassallo & Tamburro | Avvocati a Genova" />
+<meta property="og:description" content="Studio legale associato a Genova, in Piazza Colombo. Diritto bancario e assicurativo, responsabilità civile, famiglia, commerciale, condominio e locazioni." />
+<meta property="og:url" content="https://studiovassallotamburro.it/" />
+<meta property="og:image" content="https://studiovassallotamburro.it/img/hero.jpg" />
+<meta property="og:locale" content="it_IT" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Studio Legale Associato Vassallo & Tamburro",
+  "description": "Studio legale associato a Genova: diritto bancario e assicurativo, responsabilità civile, diritto di famiglia, commerciale, condominio e locazioni.",
+  "url": "https://studiovassallotamburro.it/",
+  "image": "https://studiovassallotamburro.it/img/hero.jpg",
+  "vatID": "IT02647460993",
+  "telephone": "+39 010 562795",
+  "email": "studiolegale.vt@libero.it",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Piazza Colombo 2/2",
+    "postalCode": "16121",
+    "addressLocality": "Genova",
+    "addressRegion": "GE",
+    "addressCountry": "IT"
+  },
+  "areaServed": "IT",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "09:00",
+    "closes": "19:00"
+  },
+  "founder": [
+    { "@type": "Person", "name": "Adriano Vassallo", "jobTitle": "Avvocato" },
+    { "@type": "Person", "name": "Erica Tamburro", "jobTitle": "Avvocato" }
+  ],
+  "knowsAbout": ["Diritto bancario","Diritto assicurativo","Responsabilità civile","Diritto di famiglia","Diritto commerciale","Diritto fallimentare","Condominio e locazioni"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -467,7 +507,7 @@
           <p style="color:var(--muted);max-width:440px;">Per fissare un appuntamento o richiedere una prima valutazione, utilizza i riferimenti qui sotto.</p>
           <div class="contact-rows">
             <div><div class="label">Indirizzo</div><div class="value">Piazza Colombo 2/2, 16121 Genova (GE)</div></div>
-            <a href="tel:010 562795"><div class="label">Telefono</div><div class="value">010 562795</div></a>
+            <a href="tel:+39010562795"><div class="label">Telefono</div><div class="value">010 562795</div></a>
             <a href="mailto:studiolegale.vt@libero.it"><div class="label">Email</div><div class="value">studiolegale.vt@libero.it</div></a>
             <div><div class="label">Orari</div><div class="value">Lunedì - venerdì, 9:00 - 19:00</div></div>
           </div>
@@ -482,7 +522,7 @@
                   <input id="cf-nome" name="nome" type="text" autocomplete="name" required>
                   <span class="err">Inserisci il tuo nome.</span>
                 </div>
-                <div class="field">Genova, Piazza Colombo
+                <div class="field">
                   <label class="field-label" for="cf-email">Email</label>
                   <input id="cf-email" name="email" type="email" autocomplete="email" required>
                   <span class="err">Inserisci un'email valida.</span>
@@ -558,7 +598,7 @@
   <div class="wrap footer-inner">
     <div class="footer-brand">Vassallo &amp; Tamburro</div>
     <div class="footer-meta">
-      <span>Studio Legale Associato</span><span>Piazza Colombo 2/2, Genova</span><span>P. IVA 0264746099</span><span>© <span id="year">2026</span></span>
+      <span>Studio Legale Associato</span><span>Piazza Colombo 2/2, Genova</span><span>P. IVA 02647460993</span><span>© <span id="year">2026</span></span>
     </div>
   </div>
 </footer>
@@ -702,7 +742,7 @@
       if (!consent.checked) ok = false;
       if (!ok){ form.querySelector('.invalid input, .invalid select, .invalid textarea')?.focus(); return; }
 
-      const to = 'info@studiovassallotamburro.it';
+      const to = 'studiolegale.vt@libero.it';
       const subject = 'Richiesta dal sito — Studio Legale Vassallo & Tamburro';
       const body =
         'Nome: ' + form.elements['nome'].value + '\n' +
