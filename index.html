@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Studio Legale Associato Vassallo &amp; Tamburro — Genova</title>
+<meta name="description" content="Studio Legale Associato Vassallo & Tamburro, con sede a Genova in Piazza Colombo. Diritto bancario e assicurativo, responsabilità civile, diritto di famiglia, commerciale, condominio e locazioni." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15171c;
+    --ink-soft:#1f242c;
+    --sea:#143038;
+    --stone:#ece7dc;
+    --stone-2:#f4efe6;
+    --paper:#fbf9f4;
+    --brass:#a87b36;
+    --brass-bright:#c7a05f;
+    --text:#23262c;
+    --muted:#6c707a;
+    --line:#d8d1c4;
+    --maxw:1180px;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--text);
+    font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  body.nav-open{overflow:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .display{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.04;letter-spacing:-.01em;}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--brass);display:inline-flex;align-items:center;gap:14px;}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--brass);opacity:.7;}
+
+  /* scroll progress */
+  .scroll-progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--brass-bright);z-index:90;transform:scaleX(0);transform-origin:left;}
+
+  /* cursor follower */
+  .cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--brass);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:200;opacity:0;transition:width .3s var(--ease),height .3s var(--ease),opacity .3s var(--ease),background .3s var(--ease);}
+  .cursor-ring.is-hover{width:54px;height:54px;background:rgba(168,123,54,.12);}
+
+  /* ---------- Header ---------- */
+  .site-header{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .4s var(--ease),border-color .4s var(--ease);border-bottom:1px solid transparent;}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;height:84px;transition:height .4s var(--ease);}
+  .brandmark{display:flex;align-items:center;gap:13px;color:var(--paper);transition:color .4s var(--ease);}
+  .monogram{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:20px;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.35);transition:border-color .4s var(--ease),color .4s var(--ease);}
+  .brand-text strong{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:18px;display:block;line-height:1.1;}
+  .brand-text span{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color .4s var(--ease);}
+  .site-nav ul{list-style:none;display:flex;gap:34px;margin:0;padding:0;align-items:center;}
+  .site-nav a{color:rgba(255,255,255,.82);font-size:14px;font-weight:500;position:relative;padding:6px 0;transition:color .3s var(--ease);}
+  .site-nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--brass-bright);transition:width .35s var(--ease);}
+  .site-nav a:hover{color:#fff;}
+  .site-nav a:hover::after{width:100%;}
+  .nav-cta{border:1px solid rgba(255,255,255,.4)!important;padding:11px 22px!important;border-radius:2px;color:#fff!important;transition:background .3s var(--ease),border-color .3s var(--ease)!important;}
+  .nav-cta::after{display:none;}
+  .nav-cta:hover{background:var(--brass);border-color:var(--brass)!important;}
+  .site-header.is-scrolled{background:rgba(251,249,244,.94);backdrop-filter:blur(10px);border-bottom-color:var(--line);}
+  .is-scrolled .header-inner{height:68px;}
+  .is-scrolled .brandmark{color:var(--ink);}
+  .is-scrolled .monogram{border-color:var(--brass);color:var(--brass);}
+  .is-scrolled .brand-text span{color:var(--muted);}
+  .is-scrolled .site-nav a{color:var(--text);}
+  .is-scrolled .nav-cta{color:var(--ink)!important;border-color:var(--line)!important;}
+  .is-scrolled .nav-cta:hover{color:#fff!important;background:var(--brass);border-color:var(--brass)!important;}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;width:40px;height:40px;position:relative;z-index:70;}
+  .nav-toggle span{display:block;height:1.5px;width:24px;background:#fff;margin:5px auto;transition:transform .35s var(--ease),opacity .25s var(--ease),background .4s var(--ease);}
+  .is-scrolled .nav-toggle span{background:var(--ink);}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:var(--ink);color:var(--paper);overflow:hidden;padding:120px 0 90px;}
+  .hero-photo{position:absolute;inset:-6%;background:#15171c center/cover no-repeat;background-image:url('img/hero.jpg');will-change:transform;}
+  .hero-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(15,17,20,.9) 0%,rgba(15,17,20,.72) 34%,rgba(15,17,20,.4) 62%,rgba(15,17,20,.2) 100%),linear-gradient(to top,rgba(15,17,20,.82) 0%,rgba(15,17,20,0) 46%);}
+  .hero-emblem{position:absolute;z-index:2;right:6%;bottom:-1%;height:78vh;max-height:600px;width:auto;opacity:.82;pointer-events:none;will-change:transform;filter:drop-shadow(0 12px 34px rgba(0,0,0,.55));}
+  @keyframes pulse{0%,100%{opacity:.25;}50%{opacity:.9;}}
+  .hero-inner{position:relative;z-index:3;width:100%;}
+  .hero h1{font-size:clamp(3rem,8.2vw,7rem);margin:0;color:#fff;font-weight:500;}
+  .hero h1 .amp{color:var(--brass-bright);font-style:italic;padding:0 .08em;}
+  .hero-sub{margin:34px 0 0;max-width:560px;font-size:clamp(1.05rem,2vw,1.3rem);color:rgba(255,255,255,.74);}
+  .hero-cta-row{margin-top:38px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+  .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--brass);color:#fff;padding:15px 28px;border-radius:2px;font-weight:600;font-size:14px;letter-spacing:.04em;transition:background .3s var(--ease),transform .2s var(--ease);will-change:transform;}
+  .btn-primary:hover{background:var(--brass-bright);}
+  .btn-ghost{display:inline-flex;align-items:center;gap:10px;color:rgba(255,255,255,.85);font-size:14px;font-weight:500;padding:15px 4px;border-bottom:1px solid transparent;transition:border-color .3s var(--ease),color .3s var(--ease);}
+  .btn-ghost:hover{color:#fff;border-color:var(--brass-bright);}
+  .hero-meta{margin-top:48px;display:flex;flex-wrap:wrap;gap:14px 40px;padding-top:30px;border-top:1px solid rgba(255,255,255,.12);max-width:620px;}
+  .hero-meta div{display:flex;flex-direction:column;gap:3px;}
+  .hero-meta .k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-bright);}
+  .hero-meta .v{font-family:"Cormorant Garamond",serif;font-size:22px;color:#fff;}
+
+  /* hero load animation */
+  .reveal-up{opacity:0;transform:translateY(26px);animation:heroUp 1s var(--ease) forwards;}
+  .hero h1 .line{display:block;opacity:0;transform:translateY(46px);animation:heroUp 1.1s var(--ease) forwards;}
+  .he1{animation-delay:.15s;}.he2{animation-delay:.3s;}.he3{animation-delay:.45s;}.he4{animation-delay:.7s;}.he5{animation-delay:.85s;}.he6{animation-delay:1s;}
+  @keyframes heroUp{to{opacity:1;transform:none;}}
+
+  /* ---------- Bands ---------- */
+  .band{padding:clamp(80px,11vw,148px) 0;position:relative;}
+  .band--stone{background:var(--stone);}
+  .band--paper{background:var(--paper);}
+  .band--sea{background:var(--sea);color:var(--paper);}
+  .section-head{max-width:780px;margin-bottom:64px;}
+  .section-head h2{font-size:clamp(2.1rem,4.4vw,3.4rem);margin:22px 0 0;}
+  .band--sea .section-head h2{color:#fff;}
+
+  /* ---------- Lo Studio ---------- */
+  .studio-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:72px;align-items:start;}
+  .studio-lead{font-family:"Cormorant Garamond",serif;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.42;color:var(--ink);font-weight:500;}
+  .studio-lead em{color:var(--brass);font-style:italic;}
+  .studio-body p{margin:0 0 20px;}
+  .factsheet{margin-top:38px;border-top:1px solid var(--line);}
+  .factsheet div{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
+  .factsheet .k{color:var(--muted);}
+  .factsheet .v{font-weight:600;color:var(--ink);text-align:right;}
+
+  /* ---------- Gallery ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:14px;}
+  .gframe{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--ink);border:1px solid var(--line);cursor:pointer;will-change:transform;}
+  .gframe::before{content:"";position:absolute;inset:0;z-index:1;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 1px,transparent 26px);}
+  .gframe .glyph{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:rgba(199,160,95,.7);}
+  .gframe .glyph small{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+  .gimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;transition:transform .7s var(--ease);}
+  .gimg.is-missing{display:none;}
+  .gframe:hover .gimg{transform:scale(1.07);}
+  .gframe figcaption{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:34px 18px 16px;font-family:"Cormorant Garamond",serif;font-size:1.25rem;color:#fff;background:linear-gradient(to top,rgba(21,23,28,.85),transparent);}
+  .gframe figcaption span{display:block;font-family:"Hanken Grotesk",sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-bright);margin-bottom:4px;}
+
+  /* ---------- Aree ---------- */
+  .areas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .area{background:var(--paper);border:1px solid var(--line);padding:38px 32px 42px;position:relative;overflow:hidden;transition:background .45s var(--ease),box-shadow .45s var(--ease);will-change:transform;transform-style:preserve-3d;}
+  .area::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--brass);transition:width .5s var(--ease);}
+  .area:hover{background:var(--ink);box-shadow:0 30px 60px -34px rgba(21,23,28,.5);}
+  .area:hover::before{width:100%;}
+  .area .num{font-size:12px;letter-spacing:.2em;color:var(--brass);font-weight:600;}
+  .area h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.65rem;margin:18px 0 14px;color:var(--ink);transition:color .45s var(--ease);line-height:1.15;}
+  .area p{font-size:14.5px;color:var(--muted);margin:0;transition:color .45s var(--ease);}
+  .area:hover h3{color:#fff;}
+  .area:hover p{color:rgba(255,255,255,.72);}
+  .area:hover .num{color:var(--brass-bright);}
+
+  /* ---------- Avvocati ---------- */
+  .lawyers{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .lawyer{background:var(--paper);border:1px solid var(--line);padding:44px 40px 40px;display:flex;flex-direction:column;transition:box-shadow .5s var(--ease);will-change:transform;}
+  .lawyer:hover{box-shadow:0 30px 70px -34px rgba(21,23,28,.4);}
+  .lawyer-top{display:flex;align-items:center;gap:24px;margin-bottom:28px;}
+  .portrait{width:132px;flex:0 0 132px;aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--ink);}
+  .portrait::after{content:"";position:absolute;inset:8px;border:1px solid rgba(199,160,95,.4);z-index:3;pointer-events:none;}
+  .portrait-mono{position:absolute;inset:0;z-index:1;display:grid;place-items:center;color:var(--brass-bright);font-family:"Cormorant Garamond",serif;font-size:40px;}
+  .portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 15%;z-index:2;}
+  .portrait-img.is-missing{display:none;}
+  .lawyer-name h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.7rem;margin:0;color:var(--ink);}
+  .lawyer-name .role{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-top:6px;}
+  .lawyer-bio p{font-size:15px;margin:0 0 16px;line-height:1.62;}
+  .lawyer-bio em{font-style:italic;color:var(--ink);}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px;padding-top:26px;border-top:1px solid var(--line);}
+  .chip{font-size:12px;color:var(--ink);border:1px solid var(--line);padding:6px 13px;border-radius:2px;background:var(--stone-2);}
+
+  /* ---------- Approccio ---------- */
+  .approach{max-width:880px;}
+  .approach .big{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.34;color:#fff;font-weight:500;margin:22px 0 0;}
+  .approach .big em{color:var(--brass-bright);font-style:italic;}
+  .approach p{color:rgba(255,255,255,.74);margin:32px 0 0;max-width:680px;font-size:16px;}
+  .approach-stats{display:flex;flex-wrap:wrap;gap:50px;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,.14);}
+  .approach-stats div{display:flex;flex-direction:column;gap:6px;}
+  .approach-stats .n{font-family:"Cormorant Garamond",serif;font-size:2.8rem;color:#fff;line-height:1;}
+  .approach-stats .l{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-bright);}
+
+  /* ---------- Contatti ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:stretch;}
+  .contact-block h3{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(--ink);margin:0 0 8px;font-weight:600;}
+  .contact-rows{margin-top:30px;}
+  .contact-rows a,.contact-rows div{display:block;padding:18px 0;border-top:1px solid var(--line);}
+  .contact-rows .label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-bottom:6px;}
+  .contact-rows .value{font-size:17px;color:var(--ink);font-weight:500;}
+  .contact-rows a .value{transition:color .3s var(--ease);}
+  .contact-rows a:hover .value{color:var(--brass);}
+  .map-card{background:var(--ink);color:var(--paper);padding:46px 42px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;}
+  .map-card::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 38px);}
+  .map-card .inner{position:relative;z-index:2;}
+  .map-card .pin{font-family:"Cormorant Garamond",serif;font-size:1.9rem;color:#fff;}
+  .map-card .addr{color:rgba(255,255,255,.7);margin-top:10px;font-size:15px;}
+  .btn-map{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px;margin-top:34px;color:var(--brass-bright);font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border:1px solid rgba(199,160,95,.5);padding:13px 22px;border-radius:2px;width:max-content;transition:background .3s var(--ease),color .3s var(--ease);}
+  .btn-map:hover{background:var(--brass);color:#fff;border-color:var(--brass);}
+
+  /* ---------- Contact form ---------- */
+  .form-card{background:var(--stone-2);border:1px solid var(--line);padding:38px 36px;}
+  .form-card .eyebrow{margin-bottom:24px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+  .field{display:flex;flex-direction:column;gap:7px;margin-bottom:18px;}
+  .field.full{grid-column:1 / -1;}
+  .field-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);font-weight:600;}
+  .field-label .opt{color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0;}
+  .field input,.field select,.field textarea{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:13px 14px;transition:border-color .3s var(--ease),box-shadow .3s var(--ease);}
+  .field textarea{min-height:128px;resize:vertical;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--brass);box-shadow:0 0 0 3px rgba(168,123,54,.13);}
+  .field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#b5462f;box-shadow:0 0 0 3px rgba(181,70,47,.12);}
+  .field .err{font-size:12px;color:#b5462f;display:none;}
+  .field.invalid .err{display:block;}
+  .consent{display:flex;align-items:flex-start;gap:11px;font-size:13.5px;color:var(--muted);line-height:1.5;margin:6px 0 24px;transition:color .3s var(--ease);}
+  .consent input{width:18px;height:18px;flex:0 0 18px;margin-top:2px;accent-color:var(--brass);}
+  .consent a{color:var(--brass);text-decoration:underline;text-underline-offset:2px;}
+  .consent.invalid,.consent.invalid a{color:#b5462f;}
+  .btn-submit{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border:0;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;letter-spacing:.04em;padding:15px 30px;border-radius:2px;transition:background .3s var(--ease);}
+  .btn-submit:hover{background:var(--brass);}
+  .form-card.sent .form-body{display:none;}
+  .form-success{display:none;text-align:center;padding:30px 16px;}
+  .form-card.sent .form-success{display:block;}
+  .form-success .tick{width:60px;height:60px;margin:0 auto 20px;border-radius:50%;border:1.5px solid var(--brass);display:grid;place-items:center;color:var(--brass);font-size:26px;}
+  .form-success h4{font-family:"Cormorant Garamond",serif;font-size:1.7rem;color:var(--ink);margin:0 0 10px;font-weight:600;}
+  .form-success p{color:var(--muted);margin:0 auto;max-width:340px;}
+
+  /* ---------- Map ---------- */
+  .map-wrap{position:relative;margin-top:8px;border:1px solid var(--line);overflow:hidden;background:var(--stone);}
+  .map-wrap iframe{display:block;width:100%;height:480px;border:0;filter:grayscale(.18) contrast(1.02);}
+  /* ---------- Google Maps card ---------- */
+  .gmaps-card{position:absolute;top:18px;left:18px;z-index:2;width:302px;max-width:calc(100% - 36px);background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 2px 10px rgba(0,0,0,.2);font-family:"Hanken Grotesk",Roboto,Arial,sans-serif;}
+  .gc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+  .gc-name{font-size:16px;font-weight:700;color:#202124;margin:0;line-height:1.3;}
+  .gc-actions{display:flex;gap:8px;flex:0 0 auto;}
+  .gc-btn{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#f1f3f4;transition:background .2s ease;}
+  .gc-btn svg{width:18px;height:18px;}
+  .gc-btn:hover{background:#e3e6e8;}
+  .gc-btn.open{color:#5f6368;}
+  .gc-btn.dir{color:#1a73e8;}
+  .gc-addr{font-size:13.5px;color:#5f6368;margin-top:10px;line-height:1.45;}
+  .gc-rating{display:flex;align-items:center;gap:5px;margin-top:9px;font-size:14px;}
+  .gc-score{color:#202124;font-weight:500;}
+  .gc-stars{color:#fbbc04;letter-spacing:1px;}
+  .gc-count{color:#1a73e8;}
+  .gc-info{color:#9aa0a6;font-size:13px;margin-left:2px;}
+
+  /* ---------- Footer ---------- */
+  .site-footer{background:var(--ink);color:rgba(255,255,255,.6);padding:54px 0 40px;border-top:1px solid rgba(255,255,255,.08);}
+  .footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center;}
+  .footer-brand{font-family:"Cormorant Garamond",serif;font-size:1.3rem;color:#fff;}
+  .footer-meta{font-size:13px;display:flex;flex-wrap:wrap;gap:8px 26px;}
+  .footer-meta span{color:rgba(255,255,255,.5);}
+
+  /* ---------- reveal ---------- */
+  [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+  [data-reveal].is-visible{opacity:1;transform:none;}
+  [data-reveal][data-delay="1"]{transition-delay:.1s;}
+  [data-reveal][data-delay="2"]{transition-delay:.2s;}
+  [data-reveal][data-delay="3"]{transition-delay:.3s;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .studio-grid{grid-template-columns:1fr;gap:44px;}
+    .areas{grid-template-columns:repeat(2,1fr);}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .lawyers{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;gap:40px;}
+    .form-grid{grid-template-columns:1fr;}
+    .lanterna{opacity:.5;right:-4%;}
+    .hero-emblem{right:1%;opacity:.6;height:56vh;}
+  }
+  @media (max-width:720px){
+    body{font-size:16px;}
+    .cursor-ring{display:none;}
+    .nav-toggle{display:block;}
+    .site-nav{position:fixed;inset:0;background:var(--ink);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s var(--ease);}
+    body.nav-open .site-nav{opacity:1;visibility:visible;}
+    .site-nav ul{flex-direction:column;gap:30px;text-align:center;}
+    .site-nav a{font-size:21px;color:#fff;font-family:"Cormorant Garamond",serif;}
+    body.nav-open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    body.nav-open .nav-toggle span:nth-child(2){opacity:0;}
+    body.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    body.nav-open .nav-toggle span{background:#fff!important;}
+    .areas{grid-template-columns:1fr;}
+    .lanterna{display:none;}
+    .hero-emblem{display:none;}
+    .gmaps-card{position:static;width:auto;max-width:none;margin:0;border-radius:0;box-shadow:none;border-bottom:1px solid var(--line);}
+    .map-wrap iframe{height:360px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+    .reveal-up,.hero h1 .line,[data-reveal]{opacity:1!important;transform:none!important;}
+    .cursor-ring{display:none!important;}
+  }
+  :focus-visible{outline:2px solid var(--brass-bright);outline-offset:3px;}
+  section{scroll-margin-top:90px;}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brandmark" href="#top" aria-label="Studio Legale Vassallo & Tamburro">
+      <span class="brand-text">
+        <strong>Vassallo &amp; Tamburro</strong>
+        <span>Studio Legale Associato</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <ul>
+        <li><a href="#studio">Lo Studio</a></li>
+        <li><a href="#aree">Aree di attività</a></li>
+        <li><a href="#avvocati">Gli Avvocati</a></li>
+        <li><a class="nav-cta" href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="Apri il menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduzione">
+    <div class="hero-photo" data-depth="1.2"></div>
+    <div class="hero-scrim"></div>
+    <svg class="hero-emblem" viewBox="0 0 220 250" fill="none" stroke="#c7a05f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="120" cy="24" r="5" fill="#c7a05f" stroke="none"/>
+      <line x1="120" y1="29" x2="120" y2="206"/>
+      <line x1="56" y1="50" x2="184" y2="50"/>
+      <circle cx="56" cy="50" r="3" fill="#c7a05f" stroke="none"/>
+      <circle cx="184" cy="50" r="3" fill="#c7a05f" stroke="none"/>
+      <line x1="56" y1="50" x2="34" y2="92"/>
+      <line x1="56" y1="50" x2="78" y2="92"/>
+      <path d="M34 92 Q56 122 78 92"/>
+      <line x1="184" y1="50" x2="162" y2="92"/>
+      <line x1="184" y1="50" x2="206" y2="92"/>
+      <path d="M162 92 Q184 122 206 92"/>
+      <path d="M102 206 L138 206 L150 228 L90 228 Z"/>
+      <line x1="78" y1="228" x2="162" y2="228"/>
+      <rect x="8" y="226" width="58" height="9" rx="1.5"/>
+      <rect x="12" y="217" width="50" height="9" rx="1.5"/>
+      <rect x="16" y="208" width="44" height="9" rx="1.5"/>
+    </svg>
+
+    <div class="wrap hero-inner">
+      <p class="eyebrow reveal-up he1">Genova · Piazza Colombo</p>
+      <h1 class="display">
+        <span class="line he2">Vassallo</span>
+        <span class="line he3"><span class="amp">&amp;</span>Tamburro</span>
+      </h1>
+      <p class="hero-sub reveal-up he4">Studio legale associato a Genova. Competenze condivise, attenzione al dettaglio e risposte puntuali — con una rete capace di operare su tutto il territorio nazionale.</p>
+      <div class="hero-cta-row reveal-up he5">
+        <a class="btn-primary magnetic" href="#contatti">Fissa un appuntamento <span aria-hidden="true">→</span></a>
+        <a class="btn-ghost" href="#aree">Scopri le aree di attività</a>
+      </div>
+      <div class="hero-meta reveal-up he6">
+        <div><span class="k">Sede</span><span class="v">Genova, Piazza Colombo</span></div>
+        <div><span class="k">Fondato</span><span class="v">2020</span></div>
+        <div><span class="k">Soci</span><span class="v">Vassallo · Tamburro</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LO STUDIO -->
+  <section class="band band--stone" id="studio">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Lo Studio</span>
+        <h2 class="display">Due professionisti, competenze in comune.</h2>
+      </div>
+      <div class="studio-grid">
+        <div class="studio-lead" data-reveal>
+          Lo Studio nasce nel <em>2020</em> dalla volontà e dall'entusiasmo dei due soci fondatori, <em>Adriano Vassallo</em> ed <em>Erica Tamburro</em>, che decidono di mettere in comune le rispettive competenze.
+        </div>
+        <div class="studio-body" data-reveal data-delay="1">
+          <p>Con sede a Genova nella centrale Piazza Colombo, lo Studio Associato Vassallo–Tamburro si occupa in particolare di diritto bancario e assicurativo, di responsabilità civile, di diritto di famiglia, di diritto commerciale, di condominio e locazioni.</p>
+        </div>
+      </div>
+
+      <!-- GALLERY (swappable photo slots) -->
+      <div class="gallery" style="margin-top:64px;">
+        <figure class="gframe" data-reveal>
+          <img class="gimg" src="img/studio-1.jpg" alt="Lo Studio" onerror="this.classList.add('is-missing')">
+          <span class="glyph"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 21V8l9-5 9 5v13M3 21h18M9 21v-6h6v6"/></svg><small>Lo Studio</small></span>
+          <figcaption><span>Sede</span>Piazza Colombo</figcaption>
+        </figure>
+        <figure class="gframe" data-reveal data-delay="1">
+          <img class="gimg" src="img/studio-2.jpg" alt="Sala riunioni" onerror="this.classList.add('is-missing')">
+          <span class="glyph"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h18"/></svg><small>Aggiungi foto</small></span>
+          <figcaption><span>Ambienti</span>Lo studio</figcaption>
+        </figure>
+        <figure class="gframe" data-reveal data-delay="2">
+          <img class="gimg" src="img/genova-1.jpg" alt="Genova" onerror="this.classList.add('is-missing')">
+          <span class="glyph"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2v20M7 22V8l5-3 5 3v14M9 11h6"/></svg><small>Aggiungi foto</small></span>
+          <figcaption><span>Città</span>Genova</figcaption>
+        </figure>
+        <figure class="gframe" data-reveal data-delay="3">
+          <img class="gimg" src="img/genova-2.jpg" alt="Il porto" onerror="this.classList.add('is-missing')">
+          <span class="glyph"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2v8m0 0a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM7 5h10"/></svg><small>Aggiungi foto</small></span>
+          <figcaption><span>Territorio</span>Il porto</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREE -->
+  <section class="band band--paper" id="aree">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Aree di attività</span>
+        <h2 class="display">I settori in cui operiamo</h2>
+      </div>
+      <div class="areas">
+        <article class="area tilt" data-reveal><span class="num">— 01</span><h3>Diritto bancario</h3><p>Consulenza e contenzioso nei rapporti con gli istituti di credito: finanziamenti, contestazioni su interessi, anatocismo e usura.</p></article>
+        <article class="area tilt" data-reveal data-delay="1"><span class="num">— 02</span><h3>Diritto assicurativo</h3><p>Assistenza in materia di polizze, gestione dei sinistri e rapporti con le compagnie assicurative.</p></article>
+        <article class="area tilt" data-reveal data-delay="2"><span class="num">— 03</span><h3>Responsabilità civile</h3><p>Tutela del danneggiato e risarcimento del danno in ambito contrattuale ed extracontrattuale.</p></article>
+        <article class="area tilt" data-reveal><span class="num">— 04</span><h3>Diritto di famiglia</h3><p>Separazioni, divorzi, affidamento dei figli e rapporti patrimoniali tra coniugi e conviventi.</p></article>
+        <article class="area tilt" data-reveal data-delay="1"><span class="num">— 05</span><h3>Commerciale e fallimentare</h3><p>Assistenza a imprese e professionisti, contrattualistica societaria e procedure concorsuali.</p></article>
+        <article class="area tilt" data-reveal data-delay="2"><span class="num">— 06</span><h3>Condominio e locazioni</h3><p>Controversie condominiali e gestione dei rapporti di locazione, abitativa e commerciale.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVVOCATI -->
+  <section class="band band--stone" id="avvocati">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Gli Avvocati</span>
+        <h2 class="display">I soci</h2>
+      </div>
+      <div class="lawyers">
+        <article class="lawyer" data-reveal>
+          <div class="lawyer-top">
+            <div class="portrait">
+              <img class="portrait-img" src="img/adriano-vassallo.jpg" alt="Avv. Adriano Vassallo" onerror="this.classList.add('is-missing')">
+              <span class="portrait-mono" aria-hidden="true">AV</span>
+            </div>
+            <div class="lawyer-name"><h3>Adriano Vassallo</h3><div class="role">Avvocato</div></div>
+          </div>
+          <div class="lawyer-bio">
+            <p>Nato a Genova il 20 luglio 1966. Ha conseguito il diploma di maturità classica presso il Liceo Classico Statale “Cristoforo Colombo” nell'anno scolastico 1984/1985; è sposato e padre di due figli.</p>
+            <p>Si è laureato alla Facoltà di Giurisprudenza dell'Università di Genova il 17 ottobre 1991, discutendo una tesi di diritto civile sul contratto di agenzia. È iscritto all'Albo degli Avvocati di Genova dal 1994.</p>
+            <p>Le sue principali aree di attività sono il diritto civile e commerciale, il diritto fallimentare, il diritto delle assicurazioni e la responsabilità civile.</p>
+          </div>
+        </article>
+
+        <article class="lawyer" data-reveal data-delay="1">
+          <div class="lawyer-top">
+            <div class="portrait">
+              <img class="portrait-img" src="img/erica-tamburro.jpg" alt="Avv. Erica Tamburro" onerror="this.classList.add('is-missing')">
+              <span class="portrait-mono" aria-hidden="true">ET</span>
+            </div>
+            <div class="lawyer-name"><h3>Erica Tamburro</h3><div class="role">Avvocato</div></div>
+          </div>
+          <div class="lawyer-bio">
+            <p>Nata a Genova il 30 aprile 1988. Compie studi classici e si diploma nell'anno scolastico 2006/2007.</p>
+            <p>Si iscrive al Corso di Laurea Magistrale in Giurisprudenza presso l'Università degli Studi di Genova nel 2007 e si laurea a pieni voti il 24 ottobre 2012, con una tesi in materia di diritto di famiglia comparato dal titolo <em>“La nozione di family life (art. 8 CEDU) e la convivenza tra persone dello stesso sesso”</em>.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROCCIO -->
+  <section class="band band--sea" aria-label="Il nostro approccio">
+    <div class="wrap approach" data-reveal>
+      <span class="eyebrow">Il nostro approccio</span>
+      <p class="big">Mettiamo a disposizione dei clienti il nostro bagaglio di conoscenze ed esperienza, con l'obiettivo di offrire una risposta sempre più puntuale alle loro esigenze e di <em>giungere rapidamente alla soluzione</em> del problema posto.</p>
+      <p>Oggi lo Studio si contraddistingue per lo spirito dinamico dei due soci e per una solida struttura, arricchita dall'apporto di giovani professionisti con competenze nei settori giuridici emergenti. Lo Studio Legale Associato Vassallo–Tamburro è una realtà capace di sviluppare le proprie competenze su tutto il territorio nazionale, avvalendosi di una capillare e collaudata rete di corrispondenti.</p>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section class="band band--paper" id="contatti">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Contatti</span>
+        <h2 class="display">Parliamo del tuo caso</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-block" data-reveal>
+          <h3>Studio Legale Associato Vassallo &amp; Tamburro</h3>
+          <p style="color:var(--muted);max-width:440px;">Per fissare un appuntamento o richiedere una prima valutazione, utilizza i riferimenti qui sotto.</p>
+          <div class="contact-rows">
+            <div><div class="label">Indirizzo</div><div class="value">Piazza Colombo 2/2, 16121 Genova (GE)</div></div>
+            <a href="tel:010 562795"><div class="label">Telefono</div><div class="value">010 562795</div></a>
+            <a href="mailto:info@studiovassallotamburro.it"><div class="label">Email</div><div class="value">info@studiovassallotamburro.it</div></a>
+          </div>
+        </div>
+        <aside class="form-card" data-reveal data-delay="1">
+          <div class="form-body">
+            <span class="eyebrow">Scrivici</span>
+            <form id="contactForm" novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label class="field-label" for="cf-nome">Nome e cognome</label>
+                  <input id="cf-nome" name="nome" type="text" autocomplete="name" required>
+                  <span class="err">Inserisci il tuo nome.</span>
+                </div>
+                <div class="field">
+                  <label class="field-label" for="cf-email">Email</label>
+                  <input id="cf-email" name="email" type="email" autocomplete="email" required>
+                  <span class="err">Inserisci un'email valida.</span>
+                </div>
+                <div class="field">
+                  <label class="field-label" for="cf-tel">Telefono <span class="opt">(facoltativo)</span></label>
+                  <input id="cf-tel" name="telefono" type="tel" autocomplete="tel">
+                  <span class="err"></span>
+                </div>
+                <div class="field full">
+                  <label class="field-label" for="cf-msg">Messaggio</label>
+                  <textarea id="cf-msg" name="messaggio" required></textarea>
+                  <span class="err">Scrivi un breve messaggio.</span>
+                </div>
+              </div>
+              <label class="consent">
+                <input type="checkbox" id="cf-consent" required>
+                <span>Ho letto l'<a href="privacy.html">informativa privacy</a> e acconsento al trattamento dei dati per essere ricontattato. *</span>
+              </label>
+              <button type="submit" class="btn-submit">Invia richiesta <span aria-hidden="true">→</span></button>
+            </form>
+          </div>
+          <div class="form-success">
+            <div class="tick">✓</div>
+            <h4>Grazie!</h4>
+            <p>Si aprirà il tuo programma di posta con il messaggio già pronto. Ti ricontatteremo al più presto.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  <!-- COME RAGGIUNGERCI -->
+  <section class="band band--stone" id="mappa">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Dove siamo</span>
+        <h2 class="display">Come raggiungerci</h2>
+      </div>
+    </div>
+    <div class="wrap" data-reveal>
+      <div class="map-wrap">
+        <div class="gmaps-card">
+          <div class="gc-head">
+            <h4 class="gc-name">Studio Legale Vassallo - Tamburro</h4>
+            <div class="gc-actions">
+              <a class="gc-btn open" href="https://www.google.com/maps/search/?api=1&query=Studio+Legale+Vassallo+Tamburro+Piazza+Colombo+2+Genova" target="_blank" rel="noopener" aria-label="Apri in Google Maps">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+              </a>
+              <a class="gc-btn dir" href="https://www.google.com/maps/dir/?api=1&destination=Studio+Legale+Vassallo+Tamburro+Piazza+Colombo+2+Genova" target="_blank" rel="noopener" aria-label="Indicazioni stradali">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.71 11.29l-9-9a.996.996 0 0 0-1.41 0l-9 9a.996.996 0 0 0 0 1.41l9 9c.39.39 1.02.39 1.41 0l9-9a.996.996 0 0 0 0-1.41zM14 14.5V12h-4v3H8v-4c0-.55.45-1 1-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="gc-addr">Piazza Colombo, 2/2, 16121<br>Genova GE, Italia</div>
+          <div class="gc-rating">
+            <span class="gc-score">5.0</span>
+            <span class="gc-stars" aria-hidden="true">★</span>
+            <a class="gc-count" href="https://www.google.com/maps/search/?api=1&query=Studio+Legale+Vassallo+Tamburro+Piazza+Colombo+2+Genova" target="_blank" rel="noopener">(1)</a>
+            <span class="gc-info" aria-hidden="true">ⓘ</span>
+          </div>
+        </div>
+        <iframe
+          title="Mappa — Studio Legale Vassallo &amp; Tamburro, Piazza Colombo 2/2, Genova"
+          src="https://maps.google.com/maps?q=Studio%20Legale%20Vassallo%20-%20Tamburro%2C%20Piazza%20Colombo%202%2F2%2C%2016121%20Genova%20GE&z=16&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">Vassallo &amp; Tamburro</div>
+    <div class="footer-meta">
+      <span>Studio Legale Associato</span><span>Piazza Colombo 2, Genova</span><span>P. IVA 0264746099</span><span>© <span id="year">2026</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll progress */
+  const progress = document.querySelector('.scroll-progress');
+  function onScroll(){
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    progress.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
+    header.classList.toggle('is-scrolled', window.scrollY > 40);
+  }
+  const header = document.querySelector('.site-header');
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* mobile nav */
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle.addEventListener('click', () => {
+    const open = document.body.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    document.body.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  /* reveal on scroll */
+  const items = document.querySelectorAll('[data-reveal]');
+  if (reduce) {
+    items.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    items.forEach(el => io.observe(el));
+  }
+
+  /* count up */
+  function runCount(el){
+    const target = +el.dataset.count;
+    const suffix = el.dataset.suffix || '';
+    const dur = 1500, start = performance.now();
+    function tick(now){
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(tick); else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  const counters = document.querySelectorAll('[data-count]');
+  if (reduce){
+    counters.forEach(el => el.textContent = el.dataset.count + (el.dataset.suffix || ''));
+  } else {
+    const co = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting){ runCount(e.target); co.unobserve(e.target); } });
+    }, {threshold:0.6});
+    counters.forEach(el => co.observe(el));
+  }
+
+  if (!reduce){
+    /* hero parallax — keep the background photo fixed */
+    const photo = document.querySelector('.hero-photo');
+    const emblem = document.querySelector('.hero-emblem');
+    let sy = 0;
+    function applyParallax(){
+      sy = window.scrollY;
+      if (photo){
+        photo.style.transform = 'none';
+      }
+      if (emblem){
+        emblem.style.transform = 'translate3d(0,' + (sy * 0.3) + 'px,0)';
+      }
+    }
+    window.addEventListener('scroll', () => requestAnimationFrame(applyParallax), {passive:true});
+    applyParallax();
+
+    /* card tilt */
+    document.querySelectorAll('.tilt').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'perspective(800px) rotateX(' + (-py * 5) + 'deg) rotateY(' + (px * 5) + 'deg) translateY(-4px)';
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+
+    /* magnetic buttons */
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        btn.style.transform = 'translate(' + ((e.clientX - r.left - r.width/2) * 0.25) + 'px,' + ((e.clientY - r.top - r.height/2) * 0.3) + 'px)';
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+
+    /* cursor ring */
+    const ring = document.querySelector('.cursor-ring');
+    let rx = 0, ry = 0, tx = 0, ty = 0, shown = false;
+    if (window.matchMedia('(pointer:fine)').matches){
+      window.addEventListener('mousemove', (e) => {
+        tx = e.clientX; ty = e.clientY;
+        if (!shown){ ring.style.opacity = '1'; shown = true; }
+      });
+      (function loop(){
+        rx += (tx - rx) * 0.18; ry += (ty - ry) * 0.18;
+        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+        requestAnimationFrame(loop);
+      })();
+      document.querySelectorAll('a, button, .area, .lawyer, .gframe').forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('is-hover'));
+      });
+    }
+  }
+
+  /* contact form */
+  const form = document.getElementById('contactForm');
+  if (form){
+    const card = form.closest('.form-card');
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      const required = [['nome', v => !!v.trim()], ['email', v => emailRe.test(v.trim())], ['messaggio', v => !!v.trim()]];
+      required.forEach(([name, test]) => {
+        const el = form.elements[name];
+        const bad = !test(el.value);
+        el.closest('.field').classList.toggle('invalid', bad);
+        if (bad) ok = false;
+      });
+      const consent = document.getElementById('cf-consent');
+      const consentWrap = consent.closest('.consent');
+      consentWrap.classList.toggle('invalid', !consent.checked);
+      if (!consent.checked) ok = false;
+      if (!ok){ form.querySelector('.invalid input, .invalid select, .invalid textarea')?.focus(); return; }
+
+      const to = 'info@studiovassallotamburro.it';
+      const subject = 'Richiesta dal sito — Studio Legale Vassallo & Tamburro';
+      const body =
+        'Nome: ' + form.elements['nome'].value + '\n' +
+        'Email: ' + form.elements['email'].value + '\n' +
+        'Telefono: ' + (form.elements['telefono'].value || '—') + '\n\n' +
+        form.elements['messaggio'].value;
+      window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      card.classList.add('sent');
+    });
+    form.querySelectorAll('input, select, textarea').forEach(el =>
+      el.addEventListener('input', () => el.closest('.field')?.classList.remove('invalid')));
+    document.getElementById('cf-consent').addEventListener('change', (e) =>
+      e.target.closest('.consent').classList.remove('invalid'));
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
